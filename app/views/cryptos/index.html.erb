@@ -1,0 +1,16 @@
+<h1>Crypto Portfolio</h1>
+
+<table>
+  <tr>
+    <th>Crypto Name</th>
+    <th>Amount</th>
+  </tr>
+
+  <% @cryptos.each do |crypto| %>
+    <tr>
+      <td><%= crypto.crypto %></td>
+      <td><%= crypto.amount %></td>
+      <td><%= link_to 'Show', crypto_path(crypto) %></td>
+    </tr>
+  <% end %>
+</table>
