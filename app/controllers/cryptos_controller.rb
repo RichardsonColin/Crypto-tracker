@@ -8,6 +8,7 @@ class CryptosController < ApplicationController
   end
 
   def new
+    @crypto = Crypto.new
   end
 
   def create
