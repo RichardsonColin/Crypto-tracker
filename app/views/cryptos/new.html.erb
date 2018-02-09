@@ -1,5 +1,5 @@
 <h1>La New Crypto</h1>
-<%= form_with scope: :crypto, local: true do |form| %>
+<%= form_with scope: :crypto, url: cryptos_path, local: true do |form| %>
   <p>
     <%= form.label :crypto %><br>
     <%= form.text_field :crypto %>
