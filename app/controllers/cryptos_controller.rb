@@ -25,6 +25,16 @@ class CryptosController < ApplicationController
     end
   end
 
+  def update
+    @crypto = Crypto.find(params[:id])
+
+    if @crypto.update(crypto_params)
+      redirect_to @crypto
+    else
+      render 'update'
+    end
+  end
+
   private
     def crypto_params
       params.require(:crypto).permit(:crypto, :amount)
