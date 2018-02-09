@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'main/index'
 
-  resources :cryptos
+  resources :portfolios
 
   root 'main#index'
 end
