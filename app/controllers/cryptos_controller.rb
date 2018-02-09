@@ -11,6 +11,10 @@ class CryptosController < ApplicationController
     @crypto = Crypto.new
   end
 
+  def edit
+    @crypto = Crypto.find(params[:id])
+  end
+
   def create
     @crypto = Crypto.new(crypto_params)
 
