@@ -12,6 +12,9 @@
       <td><%= crypto.amount %></td>
       <td><%= link_to 'Details', crypto_path(crypto) %></td>
       <td><%= link_to 'Update', edit_crypto_path(crypto) %></td>
+      <td><%= link_to 'Remove', crypto_path(crypto),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
