@@ -1,6 +1,7 @@
 class CryptosController < ApplicationController
   def show
     @crypto = Crypto.find(params[:id])
+  end
 
   def new
   end
