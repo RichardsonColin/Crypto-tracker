@@ -11,6 +11,7 @@
       <td><%= crypto.crypto %></td>
       <td><%= crypto.amount %></td>
       <td><%= link_to 'Details', crypto_path(crypto) %></td>
+      <td><%= link_to 'Update', edit_crypto_path(crypto) %></td>
     </tr>
   <% end %>
 </table>
