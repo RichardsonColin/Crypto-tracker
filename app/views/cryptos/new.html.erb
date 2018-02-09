@@ -1,1 +1,16 @@
 <h1>La New Crypto</h1>
+<%= form_with scope: :crypto, local: true do |form| %>
+  <p>
+    <%= form.label :crypto %><br>
+    <%= form.text_field :crypto %>
+  </p>
+
+  <p>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
