@@ -1,5 +1,5 @@
 <h1>Crypto Portfolio</h1>
-<%= link_to 'Add crypto', new_crypto_path %>
+<%= link_to 'Add Crypto', new_crypto_path %>
 <table>
   <tr>
     <th>Crypto Name</th>
@@ -10,7 +10,7 @@
     <tr>
       <td><%= crypto.crypto %></td>
       <td><%= crypto.amount %></td>
-      <td><%= link_to 'Show', crypto_path(crypto) %></td>
+      <td><%= link_to 'Details', crypto_path(crypto) %></td>
     </tr>
   <% end %>
 </table>
