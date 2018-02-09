@@ -35,6 +35,13 @@ class CryptosController < ApplicationController
     end
   end
 
+  def destroy
+    @crypto = Crypto.find(params[:id])
+    @crypto.destroy
+
+    redirect_to cryptos_path
+  end
+
   private
     def crypto_params
       params.require(:crypto).permit(:crypto, :amount)
