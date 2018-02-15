@@ -1,11 +1,11 @@
 class CryptosController < ApplicationController
   def index
     @cryptos = Crypto.all
+    @crypto_data = get_crypto_info
   end
 
   def show
     @crypto = Crypto.find(params[:id])
-    @crypto_data = get_crypto_info(@crypto.crypto)
   end
 
   def new
@@ -48,9 +48,8 @@ class CryptosController < ApplicationController
       params.require(:crypto).permit(:crypto, :amount)
     end
 
-    def get_crypto_info(crypto)
-      @coin_market_cap = CoinMarketCap.new("/#{crypto}/", "USD")
-      @response = @coin_market_cap.response
+    def get_crypto_info
+      @coin_market_cap = CoinMarketCap.new("0")
+      @coin_market_cap.response
     end
-    helper_method :get_crypto_info
 end
