@@ -9,6 +9,8 @@ class CoinMarketCap
   end
 
   def response
-    self.class.get("/", @options)
+    Rails.cache.fetch("cache", expires_in: 10.minutes) do
+      self.class.get("/", @options)
+    end
   end
 end
