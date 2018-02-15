@@ -1,10 +1,11 @@
 class CryptosController < ApplicationController
   def index
     @cryptos = Crypto.all
-    @crypto_data = get_crypto_info
+    @cryptos_data = get_crypto_info
   end
 
   def show
+    @cryptos_data = get_crypto_info
     @crypto = Crypto.find(params[:id])
   end
 
@@ -44,12 +45,13 @@ class CryptosController < ApplicationController
   end
 
   private
-    def crypto_params
-      params.require(:crypto).permit(:crypto, :amount)
-    end
 
-    def get_crypto_info
-      @coin_market_cap = CoinMarketCap.new("0")
-      @coin_market_cap.response
-    end
+  def crypto_params
+    params.require(:crypto).permit(:crypto, :amount)
+  end
+
+  def get_crypto_info
+    @coin_market_cap = CoinMarketCap.new("0")
+    @coin_market_cap.response
+  end
 end

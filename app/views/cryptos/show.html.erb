@@ -1,12 +1,32 @@
-<p>
-  <strong>Crypto:</strong>
-  <%= @crypto.crypto %>
-</p>
+<% @cryptos_data.each do |api| %>
+  <% if @crypto.crypto == api["id"] %>
+    <p>
+      <strong>Crypto:</strong>
+      <%= api["name"] %>
+    </p>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @crypto.amount %>
-</p>
+    <table>
+      <tr>
+        <th>Amount</th>
+        <th>Current BTC Price</th>
+        <th>BTC Value</th>
+        <th>USD Value</th>
+        <th>1H Change</th>
+        <th>24H Change</th>
+        <th>1W Change</th>
+      </tr>
+      <tr>
+        <td><%= @crypto.amount %></td>
+        <td><%= "#{api["price_btc"]}" %></td>
+        <td><%= "₿ #{(api["price_btc"].to_f * @crypto.amount).round(5)}" %></td>
+        <td><%= "$ #{(api["price_usd"].to_f * @crypto.amount).round(2)}" %></td>
+        <td><%= "% #{api["percent_change_1h"]}" %></td>
+        <td><%= "% #{api["percent_change_24h"]}" %></td>
+        <td><%= "% #{api["percent_change_7d"]}" %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>
 
-<%= link_to 'Update', edit_crypto_path(@crypto) %> |
-<%= link_to 'Back to Cryptos', cryptos_path %>
+<%= link_to 'Update', edit_crypto_path(@crypto) %>
+<%= link_to 'Back to Crypto Portfolio', cryptos_path %>

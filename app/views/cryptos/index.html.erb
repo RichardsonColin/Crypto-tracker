@@ -15,7 +15,7 @@
   <% total_btc_value, total_fiat_value = 0, 0 %>
 
   <% @cryptos.each do |crypto| %>
-    <% @crypto_data.each do |api| %>
+    <% @cryptos_data.each do |api| %>
       <% if crypto.crypto == api["id"] %>
 
         <% total_btc_value += api["price_btc"].to_f * crypto.amount %>
