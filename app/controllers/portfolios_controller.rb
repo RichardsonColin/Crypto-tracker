@@ -35,9 +35,15 @@ class PortfoliosController < ApplicationController
     end
   end
 
+  def destroy
+    @portfolio = Portfolio.find(params[:id])
+    @portfolio.destroy
+
+    redirect_to portfolios_path
+  end
+
 private
   def portfolio_params
     params.require(:portfolio).permit(:portfolio_name, :description)
   end
-
 end
