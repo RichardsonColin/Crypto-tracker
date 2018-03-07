@@ -1,0 +1,16 @@
+<h1>Portfolios</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+  <% @portfolios.each do |portfolio| %>
+    <tr>
+      <td><%= portfolio.portfolio_name %></td>
+      <td><%= portfolio.description %></td>
+      <td><%= link_to 'Show', portfolio_path(portfolio) %></td>
+    </tr>
+  <% end %>
+</table>
