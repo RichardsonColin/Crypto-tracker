@@ -11,6 +11,10 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new
   end
 
+  def edit
+    @portfolio = Portfolio.find(params[:id])
+  end
+
   def create
     @portfolio = Portfolio.new(portfolio_params)
 
@@ -20,9 +24,20 @@ class PortfoliosController < ApplicationController
       render 'new'
     end
   end
-end
+
+  def update
+    @portfolio = Portfolio.find(params[:id])
+
+    if @portfolio.update(portfolio_params)
+      redirect_to @portfolio
+    else
+      render 'edit'
+    end
+  end
 
 private
   def portfolio_params
     params.require(:portfolio).permit(:portfolio_name, :description)
   end
+
+end
