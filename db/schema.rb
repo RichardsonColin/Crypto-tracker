@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307220858) do
+ActiveRecord::Schema.define(version: 20180307235825) do
 
   create_table "cryptos", force: :cascade do |t|
     t.string "crypto"
     t.decimal "amount"
+    t.integer "portfolio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["portfolio_id"], name: "index_cryptos_on_portfolio_id"
+  end
+
+  create_table "portfolio_cryptos", force: :cascade do |t|
+    t.integer "portfolio_id"
+    t.integer "crypto_id"
   end
 
   create_table "portfolios", force: :cascade do |t|
