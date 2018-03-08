@@ -1,53 +1,60 @@
 class CryptosController < ApplicationController
-  def index
-    @cryptos = Crypto.all
-    @cryptos_data = get_crypto_info
-  end
+  # def index
+  #   @cryptos = Portfolio.find(params[:id]).cryptos
+  #   @portfolio = Portfolio.find(params[:portfolio_id])
+  #   @cryptos_data = get_crypto_info
+  # end
 
-  def show
-    @cryptos_data = get_crypto_info
-    @crypto = Crypto.find(params[:id])
-  end
+  # def show
+  #   @portfolio = Portfolio.find(params[:portfolio_id])
+  #   @crypto = @portfolio.cryptos.build
+  #   @cryptos_data = get_crypto_info
+  # end
 
-  def new
-    @crypto = Crypto.new
-  end
+  # def new
+  #   @portfolio = Portfolio.find(params[:portfolio_id])
+  #   @crypto = Crypto.new
+  # end
 
-  def edit
-    @crypto = Crypto.find(params[:id])
-  end
+  # def edit
+  #   @portfolio = Portfolio.find(params[:portfolio_id])
+  #   @crypto = Crypto.find(params[:id])
+  # end
 
-  def create
-    @crypto = Crypto.new(crypto_params)
+  # def create
+  #   @portfolio = Portfolio.find(params[:portfolio_id])
+  #   @crypto = @portfolio.cryptos.build(crypto_params)
+  #   @crypto.portfolio = @portfolio
 
-    if @crypto.save
-      redirect_to @crypto
-    else
-      render 'new'
-    end
-  end
+  #   if @crypto.save
+  #     redirect_to @portfolio, notice: "Crypto was successfully added."
+  #   else
+  #     render @portfolio
+  #   end
+  # end
 
-  def update
-    @crypto = Crypto.find(params[:id])
+  # def update
+  #   @portfolio = Portfolio.find(params[:portfolio_id])
+  #   @crypto = Crypto.find(params[:id])
 
-    if @crypto.update(crypto_params)
-      redirect_to @crypto
-    else
-      render 'update'
-    end
-  end
+  #   if @crypto.update(crypto_params)
+  #     redirect_to @crypto
+  #   else
+  #     render 'update'
+  #   end
+  # end
 
-  def destroy
-    @crypto = Crypto.find(params[:id])
-    @crypto.destroy
+  # def destroy
+  #   @crypto = Crypto.find(params[:id])
+  #   @crypto.destroy
 
-    redirect_to cryptos_path
-  end
+  #   redirect_to cryptos_path
+  # end
 
   private
 
   def crypto_params
-    params.require(:crypto).permit(:crypto, :amount)
+    params.require(:crypto).permit(:crypto, :amount, :portfolio_id)
   end
 
   def get_crypto_info

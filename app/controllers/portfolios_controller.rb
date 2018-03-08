@@ -1,10 +1,13 @@
 class PortfoliosController < ApplicationController
   def index
     @portfolios = Portfolio.all
+    @cryptos_data = get_crypto_info
   end
 
   def show
     @portfolio = Portfolio.find(params[:id])
+    @crypto = @portfolio.cryptos
+    @cryptos_data = get_crypto_info
   end
 
   def new
@@ -45,5 +48,10 @@ class PortfoliosController < ApplicationController
 private
   def portfolio_params
     params.require(:portfolio).permit(:portfolio_name, :description)
+  end
+
+  def get_crypto_info
+    @coin_market_cap = CoinMarketCap.new("0")
+    @coin_market_cap.response
   end
 end
