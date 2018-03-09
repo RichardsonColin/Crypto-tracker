@@ -33,6 +33,8 @@ A RESTful API is consumed to give better detail about the cryptos in the portfol
 1. Fork and clone this repository to your local machine.
 
 2. Run
+* `bundle install`
+* `bin/rake db:reset`
 * `bin/rails db:migrate`
 * `bin/rails server`
 
