@@ -1,5 +1,14 @@
-<h1>Crypto Portfolio</h1>
-<%= link_to 'Add Crypto', new_crypto_path %>
+<p>
+  <strong>Portfolio Name:</strong>
+  <%= @portfolio.portfolio_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @portfolio.description %>
+</p>
+
+<h2>Cryptos</h2>
 <table>
   <tr>
     <th>Crypto</th>
@@ -14,7 +23,7 @@
 
   <% total_btc_value, total_fiat_value = 0, 0 %>
 
-  <% @cryptos.each do |crypto| %>
+  <% @portfolio.cryptos.each do |crypto| %>
     <% @cryptos_data.each do |api| %>
       <% if crypto.crypto == api["id"] %>
 
@@ -30,9 +39,9 @@
           <td><%= "% #{api["percent_change_1h"]}" %></td>
           <td><%= "% #{api["percent_change_24h"]}" %></td>
           <td><%= "% #{api["percent_change_7d"]}" %></td>
-          <td><%= link_to 'Details', crypto_path(crypto) %></td>
-          <td><%= link_to 'Update', edit_crypto_path(crypto) %></td>
-          <td><%= link_to 'Remove', crypto_path(crypto),
+          <td><%= link_to 'Details', [@portfolio, @crypto] %></td>
+          <td><%= link_to 'Update', [@portfolio, @crypto] %></td>
+          <td><%= link_to 'Remove', [@portfolio, @crypto],
                   method: :delete,
                   data: { confirm: 'Are you sure you want to abandon your precious crypto?' } %></td>
         </tr>
@@ -48,3 +57,6 @@
     <td><strong><%= "$ #{total_fiat_value.round(2)}" %></strong></td>
   </tr>
 </table>
+
+<%= link_to 'Add Crypto', new_portfolio_crypto_path(@portfolio) %> |
+<%= link_to 'Back', @portfolio %>
