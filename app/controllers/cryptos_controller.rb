@@ -1,13 +1,13 @@
 class CryptosController < ApplicationController
   def index
-    @cryptos = Portfolio.find(params[:portfolio_id]).cryptos
     @portfolio = Portfolio.find(params[:portfolio_id])
+    @cryptos = @portfolio.cryptos
     @cryptos_data = get_crypto_info
   end
 
   def show
     @portfolio = Portfolio.find(params[:portfolio_id])
-    @crypto = @portfolio.cryptos
+    @crypto = @portfolio.cryptos.find(params[:id])
     @cryptos_data = get_crypto_info
   end
 
@@ -38,17 +38,18 @@ class CryptosController < ApplicationController
     @crypto = Crypto.find(params[:id])
 
     if @crypto.update(crypto_params)
-      redirect_to @crypto
+      redirect_to portfolio_cryptos_path(@portfolio), notice: "Crypto was successfully updated."
     else
       render 'update'
     end
   end
 
   def destroy
+    @portfolio = Portfolio.find(params[:portfolio_id])
     @crypto = Crypto.find(params[:id])
     @crypto.destroy
 
-    redirect_to cryptos_path
+    redirect_to portfolio_cryptos_path(@portfolio), notice: "Crypto was successfully removed."
   end
 
   private

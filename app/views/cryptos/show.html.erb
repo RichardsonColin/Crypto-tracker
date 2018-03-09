@@ -28,5 +28,5 @@
   <% end %>
 <% end %>
 
-<%= link_to 'Update', portfolios_path %>
-<%= link_to 'Back to Crypto Portfolio', portfolios_path %>
+<%= link_to 'Update', edit_portfolio_crypto_path(@crypto.portfolio, @crypto) %>
+<%= link_to 'Back to Portfolio', portfolio_cryptos_path(@portfolio) %>
