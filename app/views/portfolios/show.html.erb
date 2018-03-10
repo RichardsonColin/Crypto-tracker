@@ -1,3 +1,6 @@
+<% number_of_cryptos = @portfolio.cryptos.length %>
+<% total_btc_value, total_fiat_value, total_1h_change, total_24h_change, total_7d_change = 0, 0, 0, 0, 0 %>
+
 <p>
   <strong>Portfolio Name:</strong>
   <%= @portfolio.portfolio_name %>
@@ -12,13 +15,12 @@
     <th>Number of Cryptos</th>
     <th>BTC Value</th>
     <th>USD Value</th>
-    <th>Total 1H Change</th>
-    <th>Total 24H Change</th>
-    <th>Total 1W Change</th>
+    <% if number_of_cryptos > 0 %>
+      <th>Total 1H Change</th>
+      <th>Total 24H Change</th>
+      <th>Total 1W Change</th>
+    <% end %>
   </tr>
-
-  <% total_btc_value, total_fiat_value, total_1h_change, total_24h_change, total_7d_change = 0, 0, 0, 0, 0 %>
-  <% number_of_cryptos = @portfolio.cryptos.length %>
 
   <% @portfolio.cryptos.each do |crypto| %>
     <% @cryptos_data.each do |api| %>
@@ -36,9 +38,11 @@
     <td><%= "#{number_of_cryptos}" %></td>
     <td><%= "₿ #{total_btc_value.round(2)}" %></td>
     <td><%= "$ #{total_fiat_value.round(2)}" %></td>
-    <td><%= "% #{(total_1h_change / number_of_cryptos).round(2)}"%></td>
-    <td><%= "% #{(total_24h_change / number_of_cryptos).round(2)}" %></td>
-    <td><%= "% #{(total_7d_change / number_of_cryptos).round(2)}" %></td>
+    <% if number_of_cryptos > 0 %>
+      <td><%= "% #{(total_1h_change / number_of_cryptos).round(2)}"%></td>
+      <td><%= "% #{(total_24h_change / number_of_cryptos).round(2)}" %></td>
+      <td><%= "% #{(total_7d_change / number_of_cryptos).round(2)}" %></td>
+    <% end %>
     <td><%= link_to 'View Cryptos', portfolio_cryptos_path(@portfolio) %></td>
   </tr>
 </table>

@@ -9,54 +9,57 @@
 </p>
 
 <h2>Cryptos</h2>
-<table>
-  <tr>
-    <th>Crypto</th>
-    <th>Amount</th>
-    <th>Current BTC Price</th>
-    <th>BTC Value</th>
-    <th>USD Value</th>
-    <th>1H Change</th>
-    <th>24H Change</th>
-    <th>1W Change</th>
-  </tr>
 
-  <% total_btc_value, total_fiat_value = 0, 0 %>
+<% if @portfolio.cryptos.length > 0 %>
+  <table>
+    <tr>
+      <th>Crypto</th>
+      <th>Amount</th>
+      <th>Current BTC Price</th>
+      <th>BTC Value</th>
+      <th>USD Value</th>
+      <th>1H Change</th>
+      <th>24H Change</th>
+      <th>1W Change</th>
+    </tr>
 
-  <% @cryptos.each do |crypto| %>
-    <% @cryptos_data.each do |api| %>
-      <% if crypto.crypto == api["id"] %>
+    <% total_btc_value, total_fiat_value = 0, 0 %>
 
-        <% total_btc_value += api["price_btc"].to_f * crypto.amount %>
-        <% total_fiat_value += api["price_usd"].to_f * crypto.amount %>
+    <% @cryptos.each do |crypto| %>
+      <% @cryptos_data.each do |api| %>
+        <% if crypto.crypto == api["id"] %>
 
-        <tr>
-          <td><%= api["name"] %></td>
-          <td><%= crypto.amount %></td>
-          <td><%= "#{api["price_btc"]}" %></td>
-          <td><%= "₿ #{(api["price_btc"].to_f * crypto.amount).round(5)}" %></td>
-          <td><%= "$ #{(api["price_usd"].to_f * crypto.amount).round(2)}" %></td>
-          <td><%= "% #{api["percent_change_1h"]}" %></td>
-          <td><%= "% #{api["percent_change_24h"]}" %></td>
-          <td><%= "% #{api["percent_change_7d"]}" %></td>
-          <td><%= link_to 'Details', [crypto.portfolio, crypto] %></td>
-          <td><%= link_to 'Update', edit_portfolio_crypto_path(crypto.portfolio, crypto) %></td>
-          <td><%= link_to 'Remove', portfolio_crypto_path(crypto.portfolio, crypto),
-                  method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+          <% total_btc_value += api["price_btc"].to_f * crypto.amount %>
+          <% total_fiat_value += api["price_usd"].to_f * crypto.amount %>
+
+          <tr>
+            <td><%= api["name"] %></td>
+            <td><%= crypto.amount %></td>
+            <td><%= "#{api["price_btc"]}" %></td>
+            <td><%= "₿ #{(api["price_btc"].to_f * crypto.amount).round(5)}" %></td>
+            <td><%= "$ #{(api["price_usd"].to_f * crypto.amount).round(2)}" %></td>
+            <td><%= "% #{api["percent_change_1h"]}" %></td>
+            <td><%= "% #{api["percent_change_24h"]}" %></td>
+            <td><%= "% #{api["percent_change_7d"]}" %></td>
+            <td><%= link_to 'Details', [crypto.portfolio, crypto] %></td>
+            <td><%= link_to 'Update', edit_portfolio_crypto_path(crypto.portfolio, crypto) %></td>
+            <td><%= link_to 'Remove', portfolio_crypto_path(crypto.portfolio, crypto),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <tr>
-    <td><strong>Total:</strong></td>
-    <td><!-- Empty Data--></td>
-    <td><!-- Empty Data--></td>
-    <td><strong><%= "₿ #{total_btc_value.round(2)}" %></strong></td>
-    <td><strong><%= "$ #{total_fiat_value.round(2)}" %></strong></td>
-  </tr>
-</table>
+    <tr>
+      <td><!-- Empty Data--></td>
+      <td><!-- Empty Data--></td>
+      <td><strong>Total:</strong></td>
+      <td><strong><%= "₿ #{total_btc_value.round(2)}" %></strong></td>
+      <td><strong><%= "$ #{total_fiat_value.round(2)}" %></strong></td>
+    </tr>
+  </table>
+<% end %>
 
-<%= link_to 'Add Crypto', new_portfolio_crypto_path(@portfolio) %> |
-<%= link_to 'Back', @portfolio %>
+<%= link_to 'Back', @portfolio %> |
+<%= link_to 'Add Crypto', new_portfolio_crypto_path(@portfolio) %>
