@@ -16,7 +16,8 @@
       <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
       <td><%= link_to 'Remove', portfolio_path(portfolio),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+              data: { confirm: 'Are you sure you want to remove this portfolio?
+                      All cryptocurrency holdings will be lost.' } %></td>
     </tr>
   <% end %>
 </table>

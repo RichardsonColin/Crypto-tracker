@@ -29,7 +29,7 @@ class CryptosController < ApplicationController
     if @crypto.save
       redirect_to portfolio_cryptos_path(@portfolio), notice: "Crypto was successfully added."
     else
-      render portfolio_cryptos_path(@portfolio)
+      render 'new'
     end
   end
 
