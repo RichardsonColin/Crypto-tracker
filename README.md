@@ -38,4 +38,4 @@ A RESTful API is consumed to give better detail about the cryptos in the portfol
 * `bin/rails db:migrate`
 * `bin/rails server`
 
-3. Served up at [localhost:3000](localhost:3000)
+3. Served up at [localhost:3000](http://localhost:3000)
