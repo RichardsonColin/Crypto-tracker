@@ -18,7 +18,10 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# Jquery for JavaScript
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+# Create specialized forms
+gem "select2-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
