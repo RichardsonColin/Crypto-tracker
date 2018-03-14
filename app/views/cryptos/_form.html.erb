@@ -16,8 +16,8 @@
 
   <p>
     <%= form.label :crypto %><br>
-    <%= form.select :crypto, options_for_select(@cryptos_data.map { |v| [v['name'], v['id']] }),
-                   id: 'new-crypto-select' %>
+    <%= form.select :crypto, @cryptos_data.collect { |v| [v['name'], v['id']] }, { include_blank: true },
+                   id: 'new-crypto' %>
   </p>
 
   <p>
@@ -28,5 +28,4 @@
   <p>
     <%= form.submit %>
   </p>
-
 <% end %>
