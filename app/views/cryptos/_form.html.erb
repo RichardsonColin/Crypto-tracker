@@ -16,7 +16,8 @@
 
   <p>
     <%= form.label :crypto %><br>
-    <%= form.text_field :crypto %>
+    <%= form.select :crypto, options_for_select(@cryptos_data.map { |v| [v['name'], v['id']] }),
+                   id: 'new-crypto-select' %>
   </p>
 
   <p>

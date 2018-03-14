@@ -14,6 +14,7 @@ class CryptosController < ApplicationController
   def new
     @portfolio = Portfolio.find(params[:portfolio_id])
     @crypto = Crypto.new
+    @cryptos_data = get_crypto_info
   end
 
   def edit
