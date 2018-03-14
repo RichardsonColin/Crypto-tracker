@@ -1,11 +1,11 @@
-<%= render 'layouts/tradingview_ticker' %>
 
-<!-- TradingView Widget BEGIN -->
+
+    <!-- TradingView Widget BEGIN -->
     <div class="tradingview-widget-container">
       <div class="tradingview-widget-container__widget"></div>
       <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span> by TradingView</a></div>
-        <script async type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" >
-          console.log('WWWWWWWWWWW')
+        <% content_for :js do %>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" data-turbolinks-eval=always async>
 
       {
       "symbols": [
@@ -33,7 +33,6 @@
       "locale": "en"
     }
       </script>
+      <% end %>
     </div>
-
-<h1>Welcome to the Crypto-Tracker 3000!</h1>
-<%= link_to 'My Cryptos', controller: 'portfolios' %>
+<!-- TradingView Widget END -->
