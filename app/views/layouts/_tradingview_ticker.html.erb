@@ -1,13 +1,9 @@
-
-
-    <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container">
-      <div class="tradingview-widget-container__widget"></div>
-      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span> by TradingView</a></div>
-        <% content_for :js do %>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" data-turbolinks-eval=always async>
-
-      {
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span> by TradingView</a></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" data-turbolinks-eval=always async>
+    new TradingView.widget({
       "symbols": [
         {
           "title": "S&P 500",
@@ -31,8 +27,7 @@
         }
       ],
       "locale": "en"
-    }
-      </script>
-      <% end %>
-    </div>
+    });
+  </script>
+</div>
 <!-- TradingView Widget END -->

@@ -3,13 +3,14 @@
   <head>
     <title>CryptoTracker</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://s3.tradingview.com/external-embedding/embed-widget-tickers.js', async: true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', async: true %>
   </head>
-
   <body>
+    <!-- TradingView Widget BEGIN -->
+    <div class="tradingview-widget-container">
+      <iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://s.tradingview.com/tickerswidgetembed/#%7B%22symbols%22%3A%5B%7B%22title%22%3A%22BTC%2FUSD%22%2C%22proName%22%3A%22BITFINEX%3ABTCUSD%22%7D%2C%7B%22title%22%3A%22ETH%2FUSD%22%2C%22proName%22%3A%22BITFINEX%3AETHUSD%22%7D%2C%7B%22title%22%3A%22LTC%2FUSD%22%2C%22proName%22%3A%22BITFINEX%3ALTCUSD%22%7D%2C%7B%22title%22%3A%22XRP%2FUSD%22%2C%22proName%22%3A%22BITFINEX%3AXRPUSD%22%7D%2C%7B%22title%22%3A%22BCH%2FUSD%22%2C%22proName%22%3A%22BITFINEX%3ABCHUSD%22%7D%5D%2C%22locale%22%3A%22en%22%2C%22width%22%3A%22100%25%22%2C%22height%22%3A104%2C%22utm_source%22%3A%22%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22tickers%22%7D" style="box-sizing: border-box; height: calc(72px); width: 100%;"></iframe>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Quotes</span> by TradingView</a></div>
     <%= yield %>
   </body>
 </html>
