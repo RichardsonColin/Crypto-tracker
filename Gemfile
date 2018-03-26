@@ -37,6 +37,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use httparty to access HTTP APIs
 gem 'httparty'
+# Use bootstrap for styling
+gem 'bootstrap', '~> 4.0.0'
+gem 'sprockets-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
