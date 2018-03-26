@@ -22,6 +22,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 # Create specialized forms
 gem "select2-rails"
+# Use devise to handle user authentication
+gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
