@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @portfolios = Portfolio.all
     @cryptos_data = get_crypto_info
@@ -19,7 +21,7 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio = Portfolio.new(portfolio_params)
+    @portfolio = current_user.portfolios.new(portfolio_params)
 
     if @portfolio.save
       redirect_to @portfolio

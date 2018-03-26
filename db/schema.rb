@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180326204058) do
+ActiveRecord::Schema.define(version: 20180326231559) do
 
   create_table "cryptos", force: :cascade do |t|
     t.string "crypto"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180326204058) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

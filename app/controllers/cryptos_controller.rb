@@ -1,4 +1,6 @@
 class CryptosController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @portfolio = Portfolio.find(params[:portfolio_id])
     @cryptos = @portfolio.cryptos
