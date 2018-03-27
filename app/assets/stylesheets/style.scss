@@ -1,8 +1,19 @@
 @import "bootstrap";
 
-#navbar-toggler {
-
+.navbar {
+  a {
+    text-decoration: none;
+  }
   ul, li {
     display: inline;
   }
+}
+
+.ccc-chart {
+  float: left;
+  width: 100%
+}
+
+.ccc-header-v2 {
+  float: left !important;
 }
