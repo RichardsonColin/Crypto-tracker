@@ -10,7 +10,10 @@ end
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development # Added development group.
+# Use pg for heroku deployment
 gem 'pg', group: :production # Added postgres and made it production only.
+# Use rails_12factor for heroku deployment
+gem 'rails_12factor'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
